@@ -50,5 +50,5 @@ jobs:
             docker stop $(docker ps -a -q)
             docker rm $(docker ps -a -q)
             docker pull dockerlecture/github-action-react
-            docker run -d -p 8080:8080 --network=my-network --name github-action-frontend dockerlecture/github-action-react
+            docker run -d -p 80:80 --network=my-network --name github-action-frontend dockerlecture/github-action-react
             docker system prune -f
