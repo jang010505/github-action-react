@@ -47,8 +47,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            docker stop $(docker ps -a -q)
-            docker rm $(docker ps -a -q)
-            docker pull dockerlecture/github-action-react
-            docker run -d -p 80:80 --network=my-network --name github-action-frontend dockerlecture/github-action-react
+            docker stop github-action-frontend
+            docker rm github-action-frontend
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/github-action-react
+            docker run -d -p 80:80 --network=my-network --name github-action-frontend ${{ secrets.DOCKERHUB_USERNAME }}/github-action-react
             docker system prune -f
